@@ -2,13 +2,13 @@
   "tests": [
     {
       "name": "test_initial_state",
-      "status": "PASSED",
-      "duration": 0.001
+      "status": "FAILED",
+      "duration": 0.003
     },
     {
       "name": "test_start_from_idle",
       "status": "PASSED",
-      "duration": 0.0
+      "duration": 0.001
     },
     {
       "name": "test_trigger_error_from_moving",
@@ -18,7 +18,7 @@
     {
       "name": "test_recovery_from_error",
       "status": "PASSED",
-      "duration": 0.0
+      "duration": 0.001
     },
     {
       "name": "test_full_cycle",
@@ -37,9 +37,9 @@
     }
   ],
   "summary": {
-    "passed": 7,
-    "failed": 0,
+    "passed": 6,
+    "failed": 1,
     "total": 7,
-    "duration": 0.11
+    "duration": 0.25
   }
 }

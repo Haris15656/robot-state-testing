@@ -13,71 +13,208 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #f5f5f3;
+            font-family: 'Courier New', monospace;
+            background: #080808;
+            color: #c0c0c0;
             padding: 2rem;
-            color: #1a1a1a;
+            min-height: 100vh;
         }
 
         .header {
-            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            border-bottom: 0.5px solid #1a1a1a;
+            padding-bottom: 1.5rem;
         }
 
-        .header h1 {
+        .sys-label {
+            font-size: 10px;
+            color: #333;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .sys-title {
             font-size: 22px;
             font-weight: 500;
+            color: #fff;
+            letter-spacing: 0.02em;
         }
 
-        .header p {
-            font-size: 14px;
-            color: #666;
+        .sys-sub {
+            font-size: 12px;
+            color: #444;
             margin-top: 4px;
+            letter-spacing: 0.05em;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #0f1f0f;
+            border: 0.5px solid #1a3a1a;
+            border-radius: 99px;
+            padding: 6px 14px;
+        }
+
+        .status-pill.fail {
+            background: #1f0f0f;
+            border-color: #3a1a1a;
+        }
+
+        .pulse {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #4ade80;
+        }
+
+        .pulse.fail {
+            background: #f87171;
+        }
+
+        .status-text {
+            font-size: 11px;
+            color: #4ade80;
+            letter-spacing: 0.08em;
+        }
+
+        .status-text.fail {
+            color: #f87171;
+        }
+
+        .timestamp {
+            font-size: 10px;
+            color: #2a2a2a;
+            letter-spacing: 0.06em;
         }
 
         .metrics {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            gap: 8px;
             margin-bottom: 1.5rem;
         }
 
         .metric {
-            background: #ebebeb;
+            background: #0c0c0c;
+            border: 0.5px solid #1a1a1a;
             border-radius: 8px;
             padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+        }
+
+        .metric.m-total::before {
+            background: #444;
+        }
+
+        .metric.m-pass::before {
+            background: #4ade80;
+        }
+
+        .metric.m-fail::before {
+            background: #f87171;
+        }
+
+        .metric.m-dur::before {
+            background: #60a5fa;
         }
 
         .metric-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 6px;
+            font-size: 9px;
+            color: #444;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
         .metric-value {
-            font-size: 24px;
+            font-size: 32px;
             font-weight: 500;
         }
 
-        .metric-value.green {
-            color: #2d7a2d;
+        .metric-sub {
+            font-size: 10px;
+            color: #333;
+            margin-top: 6px;
+            letter-spacing: 0.04em;
         }
 
-        .metric-value.red {
-            color: #a32d2d;
+        .white {
+            color: #fff;
+        }
+
+        .green {
+            color: #4ade80;
+        }
+
+        .red {
+            color: #f87171;
+        }
+
+        .blue {
+            color: #60a5fa;
         }
 
         .card {
-            background: #fff;
-            border: 0.5px solid #ddd;
-            border-radius: 12px;
-            padding: 1rem 1.25rem;
+            background: #0c0c0c;
+            border: 0.5px solid #1a1a1a;
+            border-radius: 8px;
+            padding: 1.25rem;
             margin-bottom: 1rem;
         }
 
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-line {
+            width: 12px;
+            height: 1px;
+            background: #333;
+        }
+
         .card-title {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 1rem;
+            font-size: 9px;
+            color: #444;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .card-meta {
+            font-size: 10px;
+            color: #2a2a2a;
+            letter-spacing: 0.04em;
         }
 
         .state-flow {
@@ -88,90 +225,167 @@
         }
 
         .state-box {
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 11px;
             font-weight: 500;
+            letter-spacing: 0.08em;
         }
 
         .s-idle {
-            background: #E6F1FB;
-            color: #0C447C;
+            background: #060d1a;
+            border: 0.5px solid #185FA5;
+            color: #60a5fa;
         }
 
         .s-moving {
-            background: #EAF3DE;
-            color: #27500A;
+            background: #061206;
+            border: 0.5px solid #3B6D11;
+            color: #86efac;
         }
 
         .s-error {
-            background: #FCEBEB;
-            color: #791F1F;
+            background: #1a0606;
+            border: 0.5px solid #A32D2D;
+            color: #fca5a5;
         }
 
         .s-recovery {
-            background: #FAEEDA;
-            color: #633806;
+            background: #1a0e03;
+            border: 0.5px solid #854F0B;
+            color: #fcd34d;
         }
 
         .arrow {
-            color: #aaa;
-            font-size: 18px;
+            color: #222;
+            font-size: 14px;
+        }
+
+        .col-headers {
+            display: grid;
+            grid-template-columns: 24px 1fr 80px 70px;
+            gap: 8px;
+            padding: 0 0 8px 0;
+            border-bottom: 0.5px solid #111;
+            margin-bottom: 4px;
+        }
+
+        .col-h {
+            font-size: 9px;
+            color: #2a2a2a;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .col-h.right {
+            text-align: right;
         }
 
         .test-row {
-            display: flex;
+            display: grid;
+            grid-template-columns: 24px 1fr 80px 70px;
+            gap: 8px;
             align-items: center;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 0.5px solid #eee;
-            font-size: 13px;
+            padding: 9px 0;
+            border-bottom: 0.5px solid #0f0f0f;
         }
 
         .test-row:last-child {
             border-bottom: none;
         }
 
+        .test-index {
+            font-size: 10px;
+            color: #222;
+        }
+
+        .test-name-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .dot-pass {
+            background: #4ade80;
+        }
+
+        .dot-fail {
+            background: #f87171;
+        }
+
         .test-name {
-            font-family: 'Courier New', monospace;
+            color: #777;
+            letter-spacing: 0.01em;
+            font-size: 12px;
+        }
+
+        .test-dur {
             color: #333;
-        }
-
-        .badge {
-            padding: 3px 10px;
-            border-radius: 99px;
             font-size: 11px;
-            font-weight: 500;
+            text-align: right;
         }
 
-        .badge-pass {
-            background: #e6f4e6;
-            color: #2d7a2d;
+        .test-status {
+            font-size: 10px;
+            text-align: right;
+            letter-spacing: 0.06em;
         }
 
-        .badge-fail {
-            background: #fcebeb;
-            color: #791F1F;
+        .test-status.pass {
+            color: #4ade80;
+        }
+
+        .test-status.fail {
+            color: #f87171;
+        }
+
+        .bar-wrap {
+            height: 1px;
+            background: #111;
+            margin-top: 1rem;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: #4ade80;
         }
 
         .tech {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
-            margin-top: 0.5rem;
         }
 
         .tech-tag {
-            background: #f0f0f0;
-            color: #555;
-            font-size: 12px;
+            background: #0c0c0c;
+            border: 0.5px solid #1e1e1e;
+            color: #444;
+            font-size: 11px;
             padding: 4px 10px;
-            border-radius: 99px;
+            border-radius: 4px;
+            letter-spacing: 0.04em;
         }
 
         @media (max-width: 600px) {
             .metrics {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .col-headers,
+            .test-row {
+                grid-template-columns: 24px 1fr 60px;
+            }
+
+            .col-h.right:last-child,
+            .test-status {
+                display: none;
             }
         }
     </style>
@@ -180,31 +394,50 @@
 <body>
 
     <div class="header">
-        <h1>Robot state testing</h1>
-        <p>Automated test suite for autonomous robot state transitions</p>
+        <div>
+            <div class="sys-label">QA System / v1.0.0</div>
+            <div class="sys-title">Robot State Testing</div>
+            <div class="sys-sub">Autonomous state transition validation</div>
+        </div>
+        <div class="header-right">
+            <div class="status-pill" id="status-pill">
+                <div class="pulse" id="pulse"></div>
+                <span class="status-text" id="status-text">ALL SYSTEMS NOMINAL</span>
+            </div>
+            <div class="timestamp" id="timestamp">—</div>
+        </div>
     </div>
 
     <div class="metrics">
-        <div class="metric">
+        <div class="metric m-total">
             <div class="metric-label">Total tests</div>
-            <div class="metric-value" id="total">-</div>
+            <div class="metric-value white" id="total">—</div>
+            <div class="metric-sub">test cases</div>
         </div>
-        <div class="metric">
+        <div class="metric m-pass">
             <div class="metric-label">Passed</div>
-            <div class="metric-value green" id="passed">-</div>
+            <div class="metric-value green" id="passed">—</div>
+            <div class="metric-sub">successful</div>
         </div>
-        <div class="metric">
+        <div class="metric m-fail">
             <div class="metric-label">Failed</div>
-            <div class="metric-value red" id="failed">-</div>
+            <div class="metric-value red" id="failed">—</div>
+            <div class="metric-sub">errors</div>
         </div>
-        <div class="metric">
+        <div class="metric m-dur">
             <div class="metric-label">Duration</div>
-            <div class="metric-value" id="duration">-</div>
+            <div class="metric-value blue" id="duration">—</div>
+            <div class="metric-sub">total runtime</div>
         </div>
     </div>
 
     <div class="card">
-        <div class="card-title">State machine flow</div>
+        <div class="card-header">
+            <div class="card-header-left">
+                <div class="card-line"></div>
+                <div class="card-title">State machine flow</div>
+            </div>
+        </div>
         <div class="state-flow">
             <div class="state-box s-idle">IDLE</div>
             <div class="arrow">→</div>
@@ -219,12 +452,32 @@
     </div>
 
     <div class="card">
-        <div class="card-title">Test results</div>
+        <div class="card-header">
+            <div class="card-header-left">
+                <div class="card-line"></div>
+                <div class="card-title">Test results</div>
+            </div>
+            <div class="card-meta" id="pass-count">— / — passed</div>
+        </div>
+        <div class="col-headers">
+            <div class="col-h">#</div>
+            <div class="col-h">Test name</div>
+            <div class="col-h right">Duration</div>
+            <div class="col-h right">Status</div>
+        </div>
         <div id="test-list"></div>
+        <div class="bar-wrap">
+            <div class="bar-fill" id="bar-fill" style="width:0%"></div>
+        </div>
     </div>
 
     <div class="card">
-        <div class="card-title">Tech stack</div>
+        <div class="card-header">
+            <div class="card-header-left">
+                <div class="card-line"></div>
+                <div class="card-title">Tech stack</div>
+            </div>
+        </div>
         <div class="tech">
             <span class="tech-tag">Python 3.12</span>
             <span class="tech-tag">Pytest</span>
@@ -239,13 +492,13 @@
   "tests": [
     {
       "name": "test_initial_state",
-      "status": "PASSED",
-      "duration": 0.001
+      "status": "FAILED",
+      "duration": 0.003
     },
     {
       "name": "test_start_from_idle",
       "status": "PASSED",
-      "duration": 0.0
+      "duration": 0.001
     },
     {
       "name": "test_trigger_error_from_moving",
@@ -255,7 +508,7 @@
     {
       "name": "test_recovery_from_error",
       "status": "PASSED",
-      "duration": 0.0
+      "duration": 0.001
     },
     {
       "name": "test_full_cycle",
@@ -274,10 +527,10 @@
     }
   ],
   "summary": {
-    "passed": 7,
-    "failed": 0,
+    "passed": 6,
+    "failed": 1,
     "total": 7,
-    "duration": 0.11
+    "duration": 0.25
   }
 };
 
@@ -285,14 +538,31 @@
         document.getElementById('passed').textContent = data.summary.passed;
         document.getElementById('failed').textContent = data.summary.failed;
         document.getElementById('duration').textContent = data.summary.duration + 's';
+        document.getElementById('pass-count').textContent = data.summary.passed + ' / ' + data.summary.total + ' passed';
+        document.getElementById('timestamp').textContent = 'Last run: ' + new Date().toLocaleString();
+
+        const passRate = (data.summary.passed / data.summary.total) * 100;
+        document.getElementById('bar-fill').style.width = passRate + '%';
+
+        if (data.summary.failed > 0) {
+            document.getElementById('bar-fill').style.background = '#f87171';
+            document.getElementById('status-pill').classList.add('fail');
+            document.getElementById('pulse').classList.add('fail');
+            document.getElementById('status-text').classList.add('fail');
+            document.getElementById('status-text').textContent = 'FAILURES DETECTED';
+        }
 
         const list = document.getElementById('test-list');
-        data.tests.forEach(test => {
+        data.tests.forEach((test, i) => {
+            const pass = test.status === 'PASSED';
+            const num = (i + 1).toString().padStart(2, '0');
             const row = document.createElement('div');
             row.className = 'test-row';
             row.innerHTML = `
-      <span class="test-name">${test.name}</span>
-      <span class="badge ${test.status === 'PASSED' ? 'badge-pass' : 'badge-fail'}">${test.status}</span>
+      <span class="test-index">${num}</span>
+      <div class="test-name-wrap"><div class="dot ${pass ? 'dot-pass' : 'dot-fail'}"></div><span class="test-name">${test.name}</span></div>
+      <span class="test-dur">${test.duration.toFixed(3)}s</span>
+      <span class="test-status ${pass ? 'pass' : 'fail'}">${test.status}</span>
     `;
             list.appendChild(row);
         });

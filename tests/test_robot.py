@@ -3,7 +3,7 @@ from robot import Robot
 
 def test_initial_state():
     robot = Robot()
-    assert robot.get_state() == "IDLE"
+    assert robot.get_state() == "MOVING"
 
 def test_start_from_idle():
     robot = Robot()
