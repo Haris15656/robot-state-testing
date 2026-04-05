@@ -217,6 +217,12 @@
             letter-spacing: 0.04em;
         }
 
+        .state-flows {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .state-flow {
             display: flex;
             align-items: center;
@@ -224,12 +230,22 @@
             flex-wrap: wrap;
         }
 
+        .flow-label {
+            font-size: 9px;
+            color: #333;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            width: 80px;
+            flex-shrink: 0;
+        }
+
         .state-box {
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 4px;
             font-size: 11px;
             font-weight: 500;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
         }
 
         .s-idle {
@@ -256,9 +272,55 @@
             color: #fcd34d;
         }
 
+        .s-charging {
+            background: #0d0d1a;
+            border: 0.5px solid #534AB7;
+            color: #a5b4fc;
+        }
+
+        .s-obstacle {
+            background: #1a100a;
+            border: 0.5px solid #854F0B;
+            color: #fb923c;
+        }
+
+        .s-emergency {
+            background: #1a0606;
+            border: 0.5px solid #7f1d1d;
+            color: #fca5a5;
+        }
+
         .arrow {
             color: #222;
             font-size: 14px;
+        }
+
+        .states-legend {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 0.5px solid #111;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .legend-label {
+            font-size: 10px;
+            color: #444;
+            letter-spacing: 0.04em;
         }
 
         .col-headers {
@@ -387,6 +449,10 @@
             .test-status {
                 display: none;
             }
+
+            .states-legend {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -395,9 +461,9 @@
 
     <div class="header">
         <div>
-            <div class="sys-label">QA System / v1.0.0</div>
+            <div class="sys-label">QA System / v2.0.0</div>
             <div class="sys-title">Robot State Testing</div>
-            <div class="sys-sub">Autonomous state transition validation</div>
+            <div class="sys-sub">Autonomous state transition validation — 7 states / 15 test cases</div>
         </div>
         <div class="header-right">
             <div class="status-pill" id="status-pill">
@@ -435,19 +501,80 @@
         <div class="card-header">
             <div class="card-header-left">
                 <div class="card-line"></div>
-                <div class="card-title">State machine flow</div>
+                <div class="card-title">State machine flows</div>
             </div>
         </div>
-        <div class="state-flow">
-            <div class="state-box s-idle">IDLE</div>
-            <div class="arrow">→</div>
-            <div class="state-box s-moving">MOVING</div>
-            <div class="arrow">→</div>
-            <div class="state-box s-error">ERROR</div>
-            <div class="arrow">→</div>
-            <div class="state-box s-recovery">RECOVERY</div>
-            <div class="arrow">→</div>
-            <div class="state-box s-idle">IDLE</div>
+        <div class="state-flows">
+            <div class="state-flow">
+                <div class="flow-label">Main</div>
+                <div class="state-box s-idle">IDLE</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-moving">MOVING</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-error">ERROR</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-recovery">RECOVERY</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-idle">IDLE</div>
+            </div>
+            <div class="state-flow">
+                <div class="flow-label">Charging</div>
+                <div class="state-box s-idle">IDLE</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-charging">CHARGING</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-idle">IDLE</div>
+            </div>
+            <div class="state-flow">
+                <div class="flow-label">Obstacle</div>
+                <div class="state-box s-moving">MOVING</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-obstacle">OBSTACLE</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-moving">MOVING</div>
+                <div class="arrow" style="margin-left:8px">or</div>
+                <div class="state-box s-error" style="margin-left:8px">ERROR</div>
+            </div>
+            <div class="state-flow">
+                <div class="flow-label">Emergency</div>
+                <div class="state-box s-moving">MOVING</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-emergency">EMERGENCY</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-recovery">RECOVERY</div>
+                <div class="arrow">→</div>
+                <div class="state-box s-idle">IDLE</div>
+            </div>
+        </div>
+        <div class="states-legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#60a5fa"></div>
+                <div class="legend-label">IDLE — waiting</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#86efac"></div>
+                <div class="legend-label">MOVING — active</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#a5b4fc"></div>
+                <div class="legend-label">CHARGING — recharge</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#fb923c"></div>
+                <div class="legend-label">OBSTACLE — blocked</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#fca5a5"></div>
+                <div class="legend-label">ERROR — fault</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#fca5a5"></div>
+                <div class="legend-label">EMERGENCY — stopped</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#fcd34d"></div>
+                <div class="legend-label">RECOVERY — healing</div>
+            </div>
         </div>
     </div>
 
@@ -484,6 +611,8 @@
             <span class="tech-tag">pytest-html</span>
             <span class="tech-tag">State Machine Testing</span>
             <span class="tech-tag">Fault Handling</span>
+            <span class="tech-tag">Emergency Stop</span>
+            <span class="tech-tag">Obstacle Detection</span>
         </div>
     </div>
 
@@ -493,22 +622,52 @@
     {
       "name": "test_initial_state",
       "status": "FAILED",
-      "duration": 0.003
+      "duration": 0.002
     },
     {
       "name": "test_start_from_idle",
       "status": "PASSED",
-      "duration": 0.001
+      "duration": 0.0
     },
     {
-      "name": "test_trigger_error_from_moving",
+      "name": "test_charging_cycle",
       "status": "PASSED",
       "duration": 0.0
     },
     {
-      "name": "test_recovery_from_error",
+      "name": "test_cannot_charge_while_moving",
       "status": "PASSED",
       "duration": 0.001
+    },
+    {
+      "name": "test_obstacle_detected_while_moving",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_clear_obstacle_resumes_moving",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_error_from_obstacle",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_emergency_stop_from_moving",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_emergency_stop_from_obstacle",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_recovery_from_emergency_stop",
+      "status": "PASSED",
+      "duration": 0.0
     },
     {
       "name": "test_full_cycle",
@@ -516,21 +675,31 @@
       "duration": 0.0
     },
     {
+      "name": "test_full_cycle_with_obstacle",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
       "name": "test_cannot_start_from_error",
       "status": "PASSED",
-      "duration": 0.001
+      "duration": 0.004
     },
     {
       "name": "test_cannot_recover_from_idle",
       "status": "PASSED",
       "duration": 0.001
+    },
+    {
+      "name": "test_cannot_emergency_stop_from_idle",
+      "status": "PASSED",
+      "duration": 0.001
     }
   ],
   "summary": {
-    "passed": 6,
+    "passed": 14,
     "failed": 1,
-    "total": 7,
-    "duration": 0.25
+    "total": 15,
+    "duration": 0.34
   }
 };
 

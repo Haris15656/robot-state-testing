@@ -3,22 +3,52 @@
     {
       "name": "test_initial_state",
       "status": "FAILED",
-      "duration": 0.003
+      "duration": 0.002
     },
     {
       "name": "test_start_from_idle",
       "status": "PASSED",
-      "duration": 0.001
+      "duration": 0.0
     },
     {
-      "name": "test_trigger_error_from_moving",
+      "name": "test_charging_cycle",
       "status": "PASSED",
       "duration": 0.0
     },
     {
-      "name": "test_recovery_from_error",
+      "name": "test_cannot_charge_while_moving",
       "status": "PASSED",
       "duration": 0.001
+    },
+    {
+      "name": "test_obstacle_detected_while_moving",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_clear_obstacle_resumes_moving",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_error_from_obstacle",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_emergency_stop_from_moving",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_emergency_stop_from_obstacle",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_recovery_from_emergency_stop",
+      "status": "PASSED",
+      "duration": 0.0
     },
     {
       "name": "test_full_cycle",
@@ -26,20 +56,30 @@
       "duration": 0.0
     },
     {
+      "name": "test_full_cycle_with_obstacle",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
       "name": "test_cannot_start_from_error",
       "status": "PASSED",
-      "duration": 0.001
+      "duration": 0.004
     },
     {
       "name": "test_cannot_recover_from_idle",
       "status": "PASSED",
       "duration": 0.001
+    },
+    {
+      "name": "test_cannot_emergency_stop_from_idle",
+      "status": "PASSED",
+      "duration": 0.001
     }
   ],
   "summary": {
-    "passed": 6,
+    "passed": 14,
     "failed": 1,
-    "total": 7,
-    "duration": 0.25
+    "total": 15,
+    "duration": 0.34
   }
 }
