@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robot State Testing — Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f3;
+            padding: 2rem;
+            color: #1a1a1a;
+        }
+
+        .header {
+            margin-bottom: 1.5rem;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric {
+            background: #ebebeb;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 6px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .metric-value.green {
+            color: #2d7a2d;
+        }
+
+        .metric-value.red {
+            color: #a32d2d;
+        }
+
+        .card {
+            background: #fff;
+            border: 0.5px solid #ddd;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .state-flow {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .state-box {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .s-idle {
+            background: #E6F1FB;
+            color: #0C447C;
+        }
+
+        .s-moving {
+            background: #EAF3DE;
+            color: #27500A;
+        }
+
+        .s-error {
+            background: #FCEBEB;
+            color: #791F1F;
+        }
+
+        .s-recovery {
+            background: #FAEEDA;
+            color: #633806;
+        }
+
+        .arrow {
+            color: #aaa;
+            font-size: 18px;
+        }
+
+        .test-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 0.5px solid #eee;
+            font-size: 13px;
+        }
+
+        .test-row:last-child {
+            border-bottom: none;
+        }
+
+        .test-name {
+            font-family: 'Courier New', monospace;
+            color: #333;
+        }
+
+        .badge {
+            padding: 3px 10px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .badge-pass {
+            background: #e6f4e6;
+            color: #2d7a2d;
+        }
+
+        .badge-fail {
+            background: #fcebeb;
+            color: #791F1F;
+        }
+
+        .tech {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .tech-tag {
+            background: #f0f0f0;
+            color: #555;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 99px;
+        }
+
+        @media (max-width: 600px) {
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Robot state testing</h1>
+        <p>Automated test suite for autonomous robot state transitions</p>
+    </div>
+
+    <div class="metrics">
+        <div class="metric">
+            <div class="metric-label">Total tests</div>
+            <div class="metric-value" id="total">-</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">Passed</div>
+            <div class="metric-value green" id="passed">-</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">Failed</div>
+            <div class="metric-value red" id="failed">-</div>
+        </div>
+        <div class="metric">
+            <div class="metric-label">Duration</div>
+            <div class="metric-value" id="duration">-</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">State machine flow</div>
+        <div class="state-flow">
+            <div class="state-box s-idle">IDLE</div>
+            <div class="arrow">→</div>
+            <div class="state-box s-moving">MOVING</div>
+            <div class="arrow">→</div>
+            <div class="state-box s-error">ERROR</div>
+            <div class="arrow">→</div>
+            <div class="state-box s-recovery">RECOVERY</div>
+            <div class="arrow">→</div>
+            <div class="state-box s-idle">IDLE</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Test results</div>
+        <div id="test-list"></div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Tech stack</div>
+        <div class="tech">
+            <span class="tech-tag">Python 3.12</span>
+            <span class="tech-tag">Pytest</span>
+            <span class="tech-tag">pytest-html</span>
+            <span class="tech-tag">State Machine Testing</span>
+            <span class="tech-tag">Fault Handling</span>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+  "tests": [
+    {
+      "name": "test_initial_state",
+      "status": "PASSED",
+      "duration": 0.001
+    },
+    {
+      "name": "test_start_from_idle",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_trigger_error_from_moving",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_recovery_from_error",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_full_cycle",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_cannot_start_from_error",
+      "status": "PASSED",
+      "duration": 0.001
+    },
+    {
+      "name": "test_cannot_recover_from_idle",
+      "status": "PASSED",
+      "duration": 0.001
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "duration": 0.11
+  }
+};
+
+        document.getElementById('total').textContent = data.summary.total;
+        document.getElementById('passed').textContent = data.summary.passed;
+        document.getElementById('failed').textContent = data.summary.failed;
+        document.getElementById('duration').textContent = data.summary.duration + 's';
+
+        const list = document.getElementById('test-list');
+        data.tests.forEach(test => {
+            const row = document.createElement('div');
+            row.className = 'test-row';
+            row.innerHTML = `
+      <span class="test-name">${test.name}</span>
+      <span class="badge ${test.status === 'PASSED' ? 'badge-pass' : 'badge-fail'}">${test.status}</span>
+    `;
+            list.appendChild(row);
+        });
+    </script>
+</body>
+
+</html>

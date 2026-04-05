@@ -1,0 +1,45 @@
+{
+  "tests": [
+    {
+      "name": "test_initial_state",
+      "status": "PASSED",
+      "duration": 0.001
+    },
+    {
+      "name": "test_start_from_idle",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_trigger_error_from_moving",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_recovery_from_error",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_full_cycle",
+      "status": "PASSED",
+      "duration": 0.0
+    },
+    {
+      "name": "test_cannot_start_from_error",
+      "status": "PASSED",
+      "duration": 0.001
+    },
+    {
+      "name": "test_cannot_recover_from_idle",
+      "status": "PASSED",
+      "duration": 0.001
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "duration": 0.11
+  }
+}
