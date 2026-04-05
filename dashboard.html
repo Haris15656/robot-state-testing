@@ -13,9 +13,9 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #080808;
-            color: #c0c0c0;
+            color: #e0e0e0;
             padding: 2rem;
             min-height: 100vh;
         }
@@ -25,30 +25,28 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 2rem;
-            border-bottom: 0.5px solid #1a1a1a;
+            border-bottom: 0.5px solid #2a2a2a;
             padding-bottom: 1.5rem;
         }
 
         .sys-label {
-            font-size: 10px;
-            color: #333;
-            letter-spacing: 0.15em;
+            font-size: 11px;
+            color: #888;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             margin-bottom: 6px;
         }
 
         .sys-title {
-            font-size: 22px;
-            font-weight: 500;
+            font-size: 26px;
+            font-weight: 600;
             color: #fff;
-            letter-spacing: 0.02em;
         }
 
         .sys-sub {
-            font-size: 12px;
-            color: #444;
-            margin-top: 4px;
-            letter-spacing: 0.05em;
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 5px;
         }
 
         .header-right {
@@ -65,7 +63,7 @@
             background: #0f1f0f;
             border: 0.5px solid #1a3a1a;
             border-radius: 99px;
-            padding: 6px 14px;
+            padding: 7px 16px;
         }
 
         .status-pill.fail {
@@ -74,8 +72,8 @@
         }
 
         .pulse {
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: #4ade80;
         }
@@ -85,9 +83,10 @@
         }
 
         .status-text {
-            font-size: 11px;
+            font-size: 12px;
+            font-weight: 600;
             color: #4ade80;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
         }
 
         .status-text.fail {
@@ -95,23 +94,22 @@
         }
 
         .timestamp {
-            font-size: 10px;
-            color: #2a2a2a;
-            letter-spacing: 0.06em;
+            font-size: 11px;
+            color: #888;
         }
 
         .metrics {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+            gap: 10px;
             margin-bottom: 1.5rem;
         }
 
         .metric {
-            background: #0c0c0c;
-            border: 0.5px solid #1a1a1a;
-            border-radius: 8px;
-            padding: 1rem;
+            background: #111;
+            border: 0.5px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 1.25rem;
             position: relative;
             overflow: hidden;
         }
@@ -122,11 +120,11 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
+            height: 2px;
         }
 
         .metric.m-total::before {
-            background: #444;
+            background: #888;
         }
 
         .metric.m-pass::before {
@@ -142,23 +140,23 @@
         }
 
         .metric-label {
-            font-size: 9px;
-            color: #444;
-            letter-spacing: 0.12em;
+            font-size: 11px;
+            font-weight: 600;
+            color: #aaa;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             margin-bottom: 10px;
         }
 
         .metric-value {
-            font-size: 32px;
-            font-weight: 500;
+            font-size: 36px;
+            font-weight: 700;
         }
 
         .metric-sub {
-            font-size: 10px;
-            color: #333;
+            font-size: 11px;
+            color: #888;
             margin-top: 6px;
-            letter-spacing: 0.04em;
         }
 
         .white {
@@ -178,10 +176,10 @@
         }
 
         .card {
-            background: #0c0c0c;
-            border: 0.5px solid #1a1a1a;
-            border-radius: 8px;
-            padding: 1.25rem;
+            background: #0f0f0f;
+            border: 0.5px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 1.5rem;
             margin-bottom: 1rem;
         }
 
@@ -195,32 +193,34 @@
         .card-header-left {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .card-line {
-            width: 12px;
-            height: 1px;
-            background: #333;
+            width: 14px;
+            height: 2px;
+            background: #888;
+            border-radius: 99px;
         }
 
         .card-title {
-            font-size: 9px;
-            color: #444;
-            letter-spacing: 0.12em;
+            font-size: 12px;
+            font-weight: 700;
+            color: #ccc;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
         }
 
         .card-meta {
-            font-size: 10px;
-            color: #2a2a2a;
-            letter-spacing: 0.04em;
+            font-size: 12px;
+            font-weight: 600;
+            color: #aaa;
         }
 
         .state-flows {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
 
         .state-flow {
@@ -231,21 +231,21 @@
         }
 
         .flow-label {
-            font-size: 9px;
-            color: #333;
-            letter-spacing: 0.1em;
+            font-size: 11px;
+            font-weight: 700;
+            color: #aaa;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            width: 80px;
+            width: 90px;
             flex-shrink: 0;
         }
 
         .state-box {
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 500;
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
             letter-spacing: 0.06em;
-            white-space: nowrap;
         }
 
         .s-idle {
@@ -275,7 +275,7 @@
         .s-charging {
             background: #0d0d1a;
             border: 0.5px solid #534AB7;
-            color: #a5b4fc;
+            color: #c4b5fd;
         }
 
         .s-obstacle {
@@ -291,17 +291,18 @@
         }
 
         .arrow {
-            color: #222;
-            font-size: 14px;
+            color: #888;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .states-legend {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 0.5px solid #111;
+            gap: 10px;
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 0.5px solid #222;
         }
 
         .legend-item {
@@ -311,31 +312,32 @@
         }
 
         .legend-dot {
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             flex-shrink: 0;
         }
 
         .legend-label {
-            font-size: 10px;
-            color: #444;
-            letter-spacing: 0.04em;
+            font-size: 11px;
+            font-weight: 500;
+            color: #aaa;
         }
 
         .col-headers {
             display: grid;
-            grid-template-columns: 24px 1fr 80px 70px;
+            grid-template-columns: 28px 1fr 90px 80px;
             gap: 8px;
-            padding: 0 0 8px 0;
-            border-bottom: 0.5px solid #111;
+            padding: 0 0 10px 0;
+            border-bottom: 0.5px solid #2a2a2a;
             margin-bottom: 4px;
         }
 
         .col-h {
-            font-size: 9px;
-            color: #2a2a2a;
-            letter-spacing: 0.1em;
+            font-size: 11px;
+            font-weight: 700;
+            color: #aaa;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
@@ -345,11 +347,11 @@
 
         .test-row {
             display: grid;
-            grid-template-columns: 24px 1fr 80px 70px;
+            grid-template-columns: 28px 1fr 90px 80px;
             gap: 8px;
             align-items: center;
-            padding: 9px 0;
-            border-bottom: 0.5px solid #0f0f0f;
+            padding: 11px 0;
+            border-bottom: 0.5px solid #1a1a1a;
         }
 
         .test-row:last-child {
@@ -357,19 +359,20 @@
         }
 
         .test-index {
-            font-size: 10px;
-            color: #222;
+            font-size: 11px;
+            font-weight: 700;
+            color: #888;
         }
 
         .test-name-wrap {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .dot {
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             flex-shrink: 0;
         }
@@ -383,19 +386,21 @@
         }
 
         .test-name {
-            color: #777;
-            letter-spacing: 0.01em;
-            font-size: 12px;
+            color: #ddd;
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
         }
 
         .test-dur {
-            color: #333;
-            font-size: 11px;
+            color: #aaa;
+            font-size: 12px;
             text-align: right;
+            font-family: 'Courier New', monospace;
         }
 
         .test-status {
-            font-size: 10px;
+            font-size: 11px;
+            font-weight: 700;
             text-align: right;
             letter-spacing: 0.06em;
         }
@@ -409,29 +414,32 @@
         }
 
         .bar-wrap {
-            height: 1px;
-            background: #111;
-            margin-top: 1rem;
+            height: 2px;
+            background: #1a1a1a;
+            margin-top: 1.25rem;
+            border-radius: 99px;
         }
 
         .bar-fill {
             height: 100%;
             background: #4ade80;
+            border-radius: 99px;
         }
 
         .tech {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .tech-tag {
-            background: #0c0c0c;
-            border: 0.5px solid #1e1e1e;
-            color: #444;
-            font-size: 11px;
-            padding: 4px 10px;
-            border-radius: 4px;
+            background: #111;
+            border: 0.5px solid #333;
+            color: #ccc;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 6px;
             letter-spacing: 0.04em;
         }
 
@@ -442,7 +450,7 @@
 
             .col-headers,
             .test-row {
-                grid-template-columns: 24px 1fr 60px;
+                grid-template-columns: 28px 1fr 70px;
             }
 
             .col-h.right:last-child,
@@ -476,7 +484,7 @@
 
     <div class="metrics">
         <div class="metric m-total">
-            <div class="metric-label">Total tests</div>
+            <div class="metric-label">Total Tests</div>
             <div class="metric-value white" id="total">—</div>
             <div class="metric-sub">test cases</div>
         </div>
@@ -501,7 +509,7 @@
         <div class="card-header">
             <div class="card-header-left">
                 <div class="card-line"></div>
-                <div class="card-title">State machine flows</div>
+                <div class="card-title">State Machine Flows</div>
             </div>
         </div>
         <div class="state-flows">
@@ -532,8 +540,8 @@
                 <div class="state-box s-obstacle">OBSTACLE</div>
                 <div class="arrow">→</div>
                 <div class="state-box s-moving">MOVING</div>
-                <div class="arrow" style="margin-left:8px">or</div>
-                <div class="state-box s-error" style="margin-left:8px">ERROR</div>
+                <div class="arrow">or</div>
+                <div class="state-box s-error">ERROR</div>
             </div>
             <div class="state-flow">
                 <div class="flow-label">Emergency</div>
@@ -556,7 +564,7 @@
                 <div class="legend-label">MOVING — active</div>
             </div>
             <div class="legend-item">
-                <div class="legend-dot" style="background:#a5b4fc"></div>
+                <div class="legend-dot" style="background:#c4b5fd"></div>
                 <div class="legend-label">CHARGING — recharge</div>
             </div>
             <div class="legend-item">
@@ -582,13 +590,13 @@
         <div class="card-header">
             <div class="card-header-left">
                 <div class="card-line"></div>
-                <div class="card-title">Test results</div>
+                <div class="card-title">Test Results</div>
             </div>
             <div class="card-meta" id="pass-count">— / — passed</div>
         </div>
         <div class="col-headers">
             <div class="col-h">#</div>
-            <div class="col-h">Test name</div>
+            <div class="col-h">Test Name</div>
             <div class="col-h right">Duration</div>
             <div class="col-h right">Status</div>
         </div>
@@ -602,7 +610,7 @@
         <div class="card-header">
             <div class="card-header-left">
                 <div class="card-line"></div>
-                <div class="card-title">Tech stack</div>
+                <div class="card-title">Tech Stack</div>
             </div>
         </div>
         <div class="tech">
@@ -622,7 +630,7 @@
     {
       "name": "test_initial_state",
       "status": "FAILED",
-      "duration": 0.002
+      "duration": 0.003
     },
     {
       "name": "test_start_from_idle",
@@ -682,24 +690,24 @@
     {
       "name": "test_cannot_start_from_error",
       "status": "PASSED",
-      "duration": 0.004
+      "duration": 0.0
     },
     {
       "name": "test_cannot_recover_from_idle",
       "status": "PASSED",
-      "duration": 0.001
+      "duration": 0.0
     },
     {
       "name": "test_cannot_emergency_stop_from_idle",
       "status": "PASSED",
-      "duration": 0.001
+      "duration": 0.0
     }
   ],
   "summary": {
     "passed": 14,
     "failed": 1,
     "total": 15,
-    "duration": 0.34
+    "duration": 0.31
   }
 };
 
